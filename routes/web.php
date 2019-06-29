@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('export', 'ResiController@export')->name('export');
+Route::get('resi','ResiController@index')->name('resi');
+Route::post('import','ResiController@import')->name('import');
+Route::get('resi/fetch_data','ResiController@fetch_data')->name('fetch_data');
