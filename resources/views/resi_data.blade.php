@@ -7,6 +7,9 @@
     <td>{{ $row->invoice }}</td>
     <td>{{ $row->resi }}</td>
     <td>{{ $row->noHp }}  </td>
+    <td>
+        <a class="fa fa-eye" href="{{ route('resi.show',$row->id) }}"></a>
+    </td>
 
 </tr>
 @endforeach

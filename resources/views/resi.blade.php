@@ -9,12 +9,12 @@
   crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
   {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> --}}
   {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> --}}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
   {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
 
 
@@ -68,7 +68,7 @@
                 <div class="col-md-2">
                     <button type="button" name="filter" id="filter" class="btn btn-info ">Filter</button>
                     {{-- <button type="button" name="refresh" id="refresh" class="btn btn-danger ">Refresh</button> --}}
-                    <a class="btn btn-danger" href="{{ route('resi') }}">Refresh</a>
+                    <a class="btn btn-danger" href="{{ route('resi.index') }}">Refresh</a>
                 </div>
             </div>
             <div class="table-responsive">
@@ -86,6 +86,7 @@
                             <th width="20%">Invoice</th>
                             <th width="20%">Resi</th>
                             <th>No HP</th>
+                            <th width="5%" ><span class="fa fa-eye"></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -188,7 +189,10 @@
 
         });
     </script>
-    <script>
+
+{{-- AJAX UNTUK FILTER TANGGAL --}}
+
+    {{-- <script>
     $(document).ready(function(){
 
         var date = new Date();
@@ -239,7 +243,7 @@
         }
         else
         {
-        alert('Both Date is required');
+        alert('Masukkan tanggan yang ingin di filter');
         }
         });
 
@@ -252,6 +256,6 @@
 
 
     });
-    </script>
+    </script> --}}
 </body>
 </html>
