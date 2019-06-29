@@ -7,7 +7,17 @@
     src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> --}}
+  {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+  {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+
+
+
 </head>
 <body>
 
@@ -26,20 +36,40 @@
         <div class="card-body">
             <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="file" class="form-control" id="import">
-                <br>
-                <button class="btn btn-success " type="submit" disabled >Import User Data</button>
-                <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
-            </form>
-            <div class="row">
-                <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="file" name="file" class="form-control" id="import">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success " type="submit" disabled >Import User Data</button>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-danger" href="{{ route('export') }}">Export User Data</a>
+                    </div>
+                    <div class="col-md-2">
 
+                    </div>
                 </div>
-                <div class="col-md-3">
+
+            </form>
+            <div class="row mt-2">
+                <div class="col-md-6">
                     <div class="form-group">
-                    <input type="text" name="serach" id="serach" class="form-control" />
+                        <input type="text" name="serach" id="serach" class="form-control" placeholder="Cari data..."/>
+                    </div>
                 </div>
-            </div>
+                <div class="col-md-4">
+                    <div class="input-group input-daterange">
+                        <input type="text" name="from_date" id="from_date" readonly class="form-control mr-2" />
+                        <div class="input-group-addon mt-2">To</div>
+                        <input type="text"  name="to_date" id="to_date" readonly class="form-control ml-2" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" name="filter" id="filter" class="btn btn-info ">Filter</button>
+                    {{-- <button type="button" name="refresh" id="refresh" class="btn btn-danger ">Refresh</button> --}}
+                    <a class="btn btn-danger" href="{{ route('resi') }}">Refresh</a>
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
@@ -85,7 +115,7 @@
 })
 </script>
 <script>
-        $(document).ready(function(){
+    $(document).ready(function(){
 
          function clear_icon()
          {
@@ -157,6 +187,71 @@
          });
 
         });
-        </script>
+    </script>
+    <script>
+    $(document).ready(function(){
+
+        var date = new Date();
+
+        $('.input-daterange').datepicker({
+        todayBtn: 'linked',
+        format: 'yyyy-mm-dd',
+        autoclose: true
+        });
+
+        var _token = $('input[name="_token"]').val();
+
+        fetch_data_f();
+
+        function fetch_data_f(from_date = '', to_date = '')
+        {
+        $.ajax({
+        url:"{{ route('fetch_data_f') }}",
+        method:"POST",
+        data:{from_date:from_date, to_date:to_date, _token:_token},
+        dataType:"json",
+        success:function(data)
+        {
+        var output = '';
+        $('#total_records').text(data.length);
+        for(var count = 1; count < data.length; count++)
+        {
+            output += '<tr>';
+            output += '<td>' + count+  '</td>';
+            output += '<td>' + data[count].tglOrder + '</td>';
+            output += '<td>' + data[count].nama + '</td>';
+            output += '<td>' + data[count].produk + '</td>';
+            output += '<td>' + data[count].invoice + '</td>';
+            output += '<td>' + data[count].resi + '</td>';
+            output += '<td>' + data[count].noHp + '</td></tr>';
+        }
+        $('tbody').html(output);
+        }
+        })
+        }
+
+        $('#filter').click(function(){
+        var from_date = $('#from_date').val();
+        var to_date = $('#to_date').val();
+        if(from_date != '' &&  to_date != '')
+        {
+        fetch_data_f(from_date, to_date);
+        }
+        else
+        {
+        alert('Both Date is required');
+        }
+        });
+
+        $('#refresh').click(function(){
+            // $('#from_date').val('');
+            // $('#to_date').val('');
+            // fetch_data_f();
+        });
+
+
+
+    });
+    </script>
 </body>
 </html>

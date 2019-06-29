@@ -38,6 +38,25 @@ class ResiController extends Controller
      }
     }
 
+    public function fetch_data_f(Request $request)
+    {
+     if($request->ajax())
+     {
+      if($request->from_date != '' && $request->to_date != '')
+      {
+       $data = DB::table('resis')
+         ->whereBetween('tglOrder', array($request->from_date, $request->to_date))
+         ->get();
+      }
+      else
+      {
+       $data = DB::table('resis')->orderBy('tglOrder', 'desc')->get();
+      }
+      echo json_encode($data);
+
+     }
+    }
+
     public function import(){
         Excel::import(new ResiImport,request()->file('file'));
 
