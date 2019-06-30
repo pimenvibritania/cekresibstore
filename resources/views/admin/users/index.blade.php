@@ -8,9 +8,10 @@
                 <div class="card-header">Manage User</div>
 
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th scope="col">No</th>
                                 <th scope="col" >Name</th>
                                 <th scope="col" >Email</th>
                                 <th scope="col" >Roles</th>
@@ -19,8 +20,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($users as $i => $user)
                                 <tr>
+                                    <th>{{++$i}}</th>
                                     <th>{{$user->name}}</th>
                                     <th>{{$user->email}}</th>
                                     <th>{{ implode(',',$user->roles()->get()->pluck('name')->toArray()) }}</th>
@@ -42,6 +44,8 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    {!! $users->links() !!}
                 </div>
             </div>
         </div>
