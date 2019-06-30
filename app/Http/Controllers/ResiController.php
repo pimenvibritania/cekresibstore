@@ -8,6 +8,7 @@ use App\Imports\ResiImport;
 use Maatwebsite\Excel\Facades\Excel;
 use DB;
 use App\Resi;
+use Illuminate\Support\Facades\Auth;
 
 class ResiController extends Controller
 {
@@ -18,6 +19,11 @@ class ResiController extends Controller
     //
     public function index(){
         $data = DB::table('resis')->orderBy('tglOrder', 'desc')->paginate(10);
+
+        if(Auth::user()->hasAnyRole('user')){
+            return redirect()->route('userview');
+        }
+
         return view('resi', compact('data'));
     }
 
@@ -40,6 +46,7 @@ class ResiController extends Controller
                     ->where('id', 'like', '%'.$query.'%')
                     ->orWhere('nama', 'like', '%'.$query.'%')
                     ->orWhere('invoice', 'like', '%'.$query.'%')
+                    ->orWhere('tglOrder', 'like', '%'.$query.'%')
                     ->orderBy($sort_by, $sort_type)
                     ->paginate(10);
       return view('resi_data', compact('data'))->render();
@@ -81,4 +88,6 @@ class ResiController extends Controller
 
 
     }
+
+    
 }

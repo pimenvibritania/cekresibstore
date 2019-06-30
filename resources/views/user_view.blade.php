@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
 @section('master')
-ini isinya
+    user
 @endsection

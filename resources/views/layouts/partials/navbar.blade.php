@@ -5,7 +5,15 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Billionaire Store</a>
+            @hasrole('admin')
+            <a href="#" class="nav-link">Administrator Page</a>
+            @endhasrole
+            @hasrole('reseller')
+            <a href="#" class="nav-link">Reseller Page</a>
+            @endhasrole
+            @hasrole('user')
+            <a href="#" class="nav-link">User Page</a>
+            @endhasrole
           </li>
         
         </ul>

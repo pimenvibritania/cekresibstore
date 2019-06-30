@@ -1,20 +1,22 @@
 @foreach($data as $i => $row)
 <tr>
     <td>{{ $i+1}}</td>
-    <td>{{ $row->tglOrder }}</td>
+    <td>{{ date_format(date_create($row->tglOrder), "d-M-Y") }}</td>
     <td>{{ $row->nama }}</td>
     <td>{{ $row->produk }}</td>
     <td>{{ $row->invoice }}</td>
     <td>{{ $row->resi }}</td>
     <td>{{ $row->noHp }}  </td>
     <td>
-        <a class="fa fa-eye" href="{{ route('resi.show',$row->id) }}"></a>
+        <a class="btn btn-info" id="white" href="{{ route('resi.show',$row->id) }}">Lihat</a>
     </td>
 
 </tr>
-@endforeach
+@endforeach 
+
+
 <tr>
-    <td colspan="5" align="center">
+    <td colspan="8" align="center">
     {!! $data->links() !!}
     </td>
 </tr>

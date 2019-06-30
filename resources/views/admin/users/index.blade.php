@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
+@section('master')
+<div class="container" id="margtop">
+    <div class="row justify-content-center ">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Manage User</div>
+                <div class="card-header">
+                    <span style="font-size:25px; "><b>MANAGE USER</b></span>                 
+                </div>
 
                 <div class="card-body">
                     <table class="table table-striped">

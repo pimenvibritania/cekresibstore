@@ -12,10 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('resi.index');
 });
 
 Auth::routes();
+
+Route::get('register', function(){
+    return redirect()->route('login');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('export', 'ResiController@export')->name('export');
@@ -27,7 +31,7 @@ Route::post('resi/fetch_data_f','ResiController@fetch_data_f')->name('fetch_data
 Route::resource('resi', 'ResiController');
 
 Route::get('/admin', function(){
-    return redirect()->route('home');
+    return redirect()->route('admin.users.index');
 })->middleware(['auth', 'auth.admin']);
 
 
@@ -36,6 +40,6 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->
 });
 
 
-Route::get('test', function(){
-    return view('test');
-});
+Route::get('/userview', function(){
+    return view('user_view');
+})->name('userview');
