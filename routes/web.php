@@ -25,3 +25,12 @@ Route::get('resi/fetch_data','ResiController@fetch_data')->name('fetch_data');
 Route::post('resi/fetch_data_f','ResiController@fetch_data_f')->name('fetch_data_f');
 
 Route::resource('resi', 'ResiController');
+
+Route::get('/admin', function(){
+    return 'sia admin';
+})->middleware(['auth', 'auth.admin']);
+
+
+Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->name('admin.')->group(function(){
+    Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+});
