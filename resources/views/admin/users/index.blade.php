@@ -26,8 +26,17 @@
                                     <th>{{ implode(',',$user->roles()->get()->pluck('name')->toArray()) }}</th>
                                     <th>
                                         <a href="{{ route('admin.users.edit', $user->id) }}">
-                                            <button type="button" class="btn btn-primary" >Edit</button>
+                                            <button type="button" class="btn btn-primary float-left" >Edit</button>
                                         </a>
+
+                                        {{-- ACTION NYA ALTERNATIF, ROUTE NYA ERROR :v 'missing parameter' --}}
+
+                                        <form action="{{ action('Admin\UserController@destroy', ['id' => $user->id]) }}" method="POST">
+                                            {{method_field('DELETE')}}
+                                            @csrf
+
+                                            <button type="submit" class="btn btn-danger ml-2">Delete</button>
+                                        </form>
                                     </th>
                                 </tr>
                             @endforeach

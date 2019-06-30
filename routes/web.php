@@ -27,7 +27,7 @@ Route::post('resi/fetch_data_f','ResiController@fetch_data_f')->name('fetch_data
 Route::resource('resi', 'ResiController');
 
 Route::get('/admin', function(){
-    return 'sia admin';
+    return redirect()->route('home');
 })->middleware(['auth', 'auth.admin']);
 
 

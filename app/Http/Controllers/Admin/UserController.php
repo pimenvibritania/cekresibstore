@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         if (Auth::user()->id == $id) {
             # code...
-            return redirect()->route('admin.users.index');
+            return redirect()->route('admin.users.index')->with('danger','Admin gabisa ngerubah role admin brooo!');
         }
 
         return view ('admin.users.edit')->with(['user' => User::find($id), 'roles' => Role::all()]);
@@ -48,13 +48,13 @@ class UserController extends Controller
         //
         if (Auth::user()->id == $id) {
             # code...
-            return redirect()->route('admin.users.index');
+            return redirect()->route('admin.users.index')->with('danger','Admin gabisa ngerubah role admin brooo!');;
         }
 
         $user = User::find($id);
         $user->roles()->sync($request->roles);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success','Data berhasil di update Gannnn!');
     }
 
     /**
@@ -65,6 +65,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::user()->id == $id) {
+            # code...
+            return redirect()->route('admin.users.index')->with('danger','Admin gabisa ngehapus admin brooo :v!');;
+        }
         //
+        User::destroy($id);
+        return redirect()->route('admin.users.index')->with('success','User berhasil di hapus!');
     }
 }
