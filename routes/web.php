@@ -34,3 +34,8 @@ Route::get('/admin', function(){
 Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->name('admin.')->group(function(){
     Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
 });
+
+
+Route::get('test', function(){
+    return view('test');
+});

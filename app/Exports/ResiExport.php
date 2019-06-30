@@ -3,15 +3,15 @@
 namespace App\Exports;
 
 use App\Resi;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class ResiExport implements FromCollection
+class ResiExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    public function view(): View
     {
-        return Resi::all();
+        return view('excel', [
+            'resis' => Resi::all()
+        ]);
     }
 }

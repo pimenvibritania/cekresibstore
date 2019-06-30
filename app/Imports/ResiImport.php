@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Imports;
+use Carbon\Carbon;
 
 use App\Resi;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class ResiImport implements ToModel
+// HeadingRowFormatter::default('none');
+
+class ResiImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
@@ -14,20 +19,28 @@ class ResiImport implements ToModel
     */
     public function model(array $row)
     {
+
+        $date = $row['Tanggal Order'];
+        // $date = strtotime($date);
+        // $date = new DateTime($date);
+        $date = date_create($date);
+        $date = date_format($date, "Y-m-d");
+        // $date = Date::excelToDateTimeObject($date);
+        // dd($date);
+        // $row->formatDates(false);
+        // $row->setDateFormat('Y-m-d');
         return new Resi([
             //
-            'id' => $row[0],
-            'tglOrder' =>$row[1],
-            'invoice' =>$row[2],
-            'nama' =>$row[3],
-            'noHp' =>$row[4],
-            'produk' =>$row[5],
-            'provinsi' =>$row[6],
-            'kota' =>$row[7],
-            'kecamatan' =>$row[8],
-            'alamat' =>$row[9],
-            'resi' =>$row[10],
-
+            'tglOrder' => $date,
+            'invoice' =>$row['Invoice'],
+            'nama' =>$row['Nama'],
+            'noHp' =>$row['No Hp'],
+            'produk' =>$row['Product'],
+            'provinsi' =>$row['Provinsi'],
+            'kota' =>$row['Kota'],
+            'kecamatan' =>$row['Kecamatan'],
+            'alamat' =>$row['Alamat'],
+            'resi' =>$row['Resi'],
         ]);
     }
 }

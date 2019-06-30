@@ -68,7 +68,8 @@ class ResiController extends Controller
     // }
 
     public function import(){
-        Excel::import(new ResiImport,request()->file('file'));
+        // $reader->formatDates(false);
+        Excel::import(new ResiImport, request()->file('file'));
 
         return back()->with('success','Upload successfully!');
 
@@ -76,6 +77,8 @@ class ResiController extends Controller
 
     public function export(){
         return Excel::download(new ResiExport, 'resi.xlsx');
+        // return (new ResiExport)->download('users.xlsx');
+
 
     }
 }
