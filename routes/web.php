@@ -43,3 +43,7 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'auth.admin'])->
 Route::get('/userview', function(){
     return view('user_view');
 })->name('userview');
+
+
+Route::get('track','TrackController@index')->name('track');
+Route::get('track/search','TrackController@search')->name('tracking');

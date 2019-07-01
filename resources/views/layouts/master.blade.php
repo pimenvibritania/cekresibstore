@@ -46,6 +46,16 @@
     color: white !important;
   }
 
+  #lock{
+    width: 65% !important;
+    /* height: 40% !important; */
+  }
+
+  #mb{
+    margin-bottom: -20px !important;
+    /* margin-top: 200px !important; */
+  }
+
   </style>
 
 </head>
