@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect()->route('resi.index');
+    return redirect()->route('frontpage');
 });
 
 Auth::routes();
@@ -47,3 +47,7 @@ Route::get('/userview', function(){
 
 Route::get('track','TrackController@index')->name('track');
 Route::get('track/search','TrackController@search')->name('tracking');
+
+Route::get('frontpage', function(){
+    return view('frontpage');
+})->name('frontpage');

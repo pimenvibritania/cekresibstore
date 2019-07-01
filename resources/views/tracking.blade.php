@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('master')
-
+    
 <div class="container">
     <div class="lockscreen-logo py-5 " id="mb" >
         <div style="margin-top: 10% !important;">
@@ -33,9 +33,6 @@
         Silahkan Masukkan Invoice Anda
     </div>
 </div>
-
-</body>
-
 	{{-- <form action="{{route('tracking')}}" method="GET">
     <div class="input-group input-group ">
         <input type="text" class="form-control" name="cari" placeholder="Cari Invoice..." value="{{old('cari')}}">

@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('master')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-12" id="margtop">
             <div class="card">
                 <div class="card-header">Manage {{$user -> name}}</div>
 
