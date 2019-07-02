@@ -5,7 +5,7 @@
 <div class="container">
     <div class="lockscreen-logo py-5 " id="mb" >
         <div style="margin-top: 10% !important;">
-            <a href="#" ><b>Billionaire</b>Store</a>
+            <a href="#" ><b>Cek</b> Invoice</a>
         </div>
     </div>
     <div class="lockscreen-item" id="lock">

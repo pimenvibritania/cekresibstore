@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Exports\ResiExport;
 use App\Imports\ResiImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Steevenz\Rajaongkir;
 use DB;
-use App\Resi;
+use App\Resi; 
 use Illuminate\Support\Facades\Auth;
 
 class ResiController extends Controller
@@ -18,61 +19,51 @@ class ResiController extends Controller
     }
     //
     public function index(){
-        $data = DB::table('resis')->orderBy('tglOrder', 'desc')->paginate(10);
+
+        $cari  = Auth::user()->email;
 
         if(Auth::user()->hasAnyRole('user')){
             return redirect()->route('userview');
         }
+        elseif(Auth::user()->hasAnyRole('admin')) {
+            $data = DB::table('resis')->orderBy('tglOrder', 'desc')->paginate(10);
+            # code...
+        } elseif (Auth::user()->hasAnyRole('reseller')) {
+            # code...
+            $data = DB::table('resis')->where('email_reseller','=',"{$cari}")->paginate();
+
+        }     
+
 
         return view('resi', compact('data'));
     }
 
 
     public function show(Resi $resi){
+    
+        $data = $resi->id;
+        $inv = Resi::find($data)->resi;
+        $kurir = Resi::find($data)->kurir;
+        
+        $rajaongkir = new Rajaongkir('02ae756b2db51fac3f0f88fa25e92339', Rajaongkir::ACCOUNT_PRO);
+        $config['api_key'] = '02ae756b2db51fac3f0f88fa25e92339';
+        $config['account_type'] = 'pro';
+        $rajaongkir = new Rajaongkir($config);
+        
+    
+        $waybill = $rajaongkir->getWaybill($inv, $kurir);
 
-        return view('resi_show',compact('resi'));
+        return view('resi_show',compact('resi'))->with('waybill', $waybill);
+
+       
+
 
     }
 
     public function fetch_data(Request $request)
     {
-     if($request->ajax())
-     {
-      $sort_by = $request->get('sortby');
-      $sort_type = $request->get('sorttype');
-            $query = $request->get('query');
-            $query = str_replace(" ", "%", $query);
-      $data = DB::table('resis')
-                    ->where('id', 'like', '%'.$query.'%')
-                    ->orWhere('nama', 'like', '%'.$query.'%')
-                    ->orWhere('invoice', 'like', '%'.$query.'%')
-                    ->orWhere('tglOrder', 'like', '%'.$query.'%')
-                    ->orderBy($sort_by, $sort_type)
-                    ->paginate(10);
-      return view('resi_data', compact('data'))->render();
-     }
+    
     }
-
-    // FILTER TANGGAL
-
-    // public function fetch_data_f(Request $request)
-    // {
-    //  if($request->ajax())
-    //  {
-    //   if($request->from_date != '' && $request->to_date != '')
-    //   {
-    //    $data = DB::table('resis')
-    //      ->whereBetween('tglOrder', array($request->from_date, $request->to_date))
-    //      ->get();
-    //   }
-    //   else
-    //   {
-    //    $data = DB::table('resis')->orderBy('tglOrder', 'desc')->get();
-    //   }
-    //   echo json_encode($data);
-
-    //  }
-    // }
 
     public function import(){
         // $reader->formatDates(false);

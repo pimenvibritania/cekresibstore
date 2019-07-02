@@ -5,6 +5,7 @@
     <td>{{ $row->nama }}</td>
     <td>{{ $row->produk }}</td>
     <td>{{ $row->invoice }}</td>
+    <td>{{ $row->kurir}}</td>
     <td>{{ $row->resi }}</td>
     <td>{{ $row->noHp }}  </td>
     <td>

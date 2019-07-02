@@ -25,11 +25,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('export', 'ResiController@export')->name('export');
 // Route::get('resi','ResiController@index')->name('resi');
 Route::post('import','ResiController@import')->name('import');
+
+Route::resource('resi', 'ResiController',['except'=> ['show'] ]);
+Route::get('resi/{resi}', 'ResiController@show')->middleware('reseller')->name('resi.show');
 Route::get('resi/fetch_data','ResiController@fetch_data')->name('fetch_data');
-Route::post('resi/fetch_data_f','ResiController@fetch_data_f')->name('fetch_data_f');
-
-Route::resource('resi', 'ResiController');
-
 Route::get('/admin', function(){
     return redirect()->route('admin.users.index');
 })->middleware(['auth', 'auth.admin']);
@@ -51,3 +50,6 @@ Route::get('track/search','TrackController@search')->name('tracking');
 Route::get('frontpage', function(){
     return view('frontpage');
 })->name('frontpage');
+
+Route::get('inputresi', 'RajaOngkirController@input')->name('inputresi');
+Route::post('prosesresi','RajaOngkirController@proses')->name('prosesresi');

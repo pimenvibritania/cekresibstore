@@ -9,7 +9,7 @@ class Resi extends Model
     //
     protected $fillable=[
         'tglOrder', 'invoice', 'nama', 'noHp', 'produk',
-        'provinsi', 'kota', 'kecamatan','alamat','resi'
+        'provinsi', 'kota', 'kecamatan','alamat','resi', 'email_reseller', 'nama_reseller', 'kurir'
 
     ];
 }

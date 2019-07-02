@@ -28,6 +28,9 @@ $factory->define(Resi::class, function (Faker $faker) {
         'kecamatan'=> $faker->city,
         'alamat'=> $faker->city,
         'resi'=>Str::random(10),
+        'email_reseller'=>Str::random(10),
+        'nama_reseller'=>Str::random(12),
+        'kurir'=>Str::random(3),
 
 
     ];

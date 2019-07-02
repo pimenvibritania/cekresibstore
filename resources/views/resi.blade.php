@@ -6,7 +6,7 @@
 
     <div class="card bg-light " id="margtop">
         <div class="card-header ">
-         <span style="font-size:25px; "><b>CEK RESI</b></span> 
+         <span style="font-size:25px; "><b>DAFTAR INVOICE</b></span> 
             @hasrole('admin')
              <a class="btn btn-danger float-right " style="color: white !important;" href="{{ route('export') }}">Export User Data</a>
             @endhasrole
@@ -57,8 +57,9 @@
                             <th width="15%" class="sorting" data-sorting_type="asc" data-column_name="nama" style="cursor: pointer">Nama <span id="nama_icon"></span></th>
                             <th width="15%" class="sorting" data-sorting_type="asc" data-column_name="produk" style="cursor: pointer">Produk <span id="produk_icon"></span></th>
 
-                            <th width="20%">Invoice</th>
-                            <th width="20%">Resi</th>
+                            <th width="15%">Invoice</th>
+                            <th width="5%">Kurir</th>
+                            <th width="15%">Resi</th>
                             <th>No HP</th>
                             <th width="5%" >Action</th>
                         </tr>

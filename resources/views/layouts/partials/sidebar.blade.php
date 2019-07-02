@@ -35,13 +35,19 @@
               <li class="nav-item">
                 <a href="{{route('resi.index')}}" class="nav-link">
                   <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Cek Resi</p>
+                  <p>Daftar Invoice</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('track')}}" class="nav-link">
                   <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Tracking</p>
+                  <p>Cek Invoice</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('inputresi')}}" class="nav-link">
+                  <i class="nav-icon far fa-circle text-primary"></i>
+                  <p>Tracking Resi</p>
                 </a>
               </li>
             </ul>

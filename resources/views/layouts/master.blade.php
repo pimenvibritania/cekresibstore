@@ -143,7 +143,7 @@
     }
 })
 </script>
-<script>
+{{-- <script>
     $(document).ready(function(){
 
          function clear_icon()
@@ -216,6 +216,6 @@
          });
 
         });
-    </script>
+    </script> --}}
 </body>
 </html>

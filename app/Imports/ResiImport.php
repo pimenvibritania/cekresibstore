@@ -33,6 +33,7 @@ class ResiImport implements ToModel, WithHeadingRow
             //
             'tglOrder' => $date,
             'invoice' =>$row['Invoice'],
+            'kurir'=>$row['Kurir'],
             'nama' =>$row['Nama'],
             'noHp' =>$row['No Hp'],
             'produk' =>$row['Product'],
@@ -41,6 +42,8 @@ class ResiImport implements ToModel, WithHeadingRow
             'kecamatan' =>$row['Kecamatan'],
             'alamat' =>$row['Alamat'],
             'resi' =>$row['Resi'],
+            'email_reseller' => $row['Email Reseller'],
+            'nama_reseller' => $row['Nama Reseller'],
         ]);
     }
 }
