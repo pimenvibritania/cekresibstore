@@ -25,14 +25,12 @@ class ResiImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
 
-        try{
-        $date = date('Y-m-d', strtotime($row['Tanggal Order']));
-        // $date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($date))->format('Y-m-d');
+        $date = $row['Tanggal Order'];
+        $date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($date))->format('Y-m-d');
+        // dd($date);
+        // $date = date('Y-m-d', strtotime($date));
         // data kadang fail ketika nge eksekusi baris ini ^^^
-        } catch(Exception $e){
-            
-            return back();
-        }
+     
         
         //updateOrCreate = array pertama isikan berdasarkan data yg unique, untuk update, array kedua isikan data yg ingin d create
         return  Resi::updateOrCreate([

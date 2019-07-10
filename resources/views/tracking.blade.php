@@ -1,44 +1,84 @@
-@extends('layouts.master')
-
-@section('master')
+   
+<!DOCTYPE html>
+<html>
     
-<div class="container">
-    <div class="lockscreen-logo py-5 " id="mb" >
-        <div style="margin-top: 10% !important;">
-            <a href="#" ><b>Cek</b> Invoice</a>
-        </div>
-    </div>
-    <div class="lockscreen-item" id="lock">
-    <!-- lockscreen image -->
-    <div class="lockscreen-image">
-        <img src="{{ URL::asset('adminlte/img/user1-128x128.jpg')}}" alt="User Image">
-    </div>
-    <!-- /.lockscreen-image -->
+<head>
+	<title>My Awesome Login Page</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{URL::asset('css/login.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
 
-    <!-- lockscreen credentials (contains the form) -->
-    <form class="lockscreen-credentials" action="{{route('tracking')}}" method="GET">
-        <div class="input-group">
-        <input type="text" class="form-control" placeholder="Invoice..." name="cari" value="{{old('cari')}}">
-
-        <div class="input-group-append">
-            <button type="submit" value="CARI" class="btn"><i class="fas fa-arrow-right text-muted"></i></button>
+</head>
+<!--Coded with love by Mutiullah Samim-->
+<body>
+<div class="container mt-1">
+    @if (session('success'))
+        <div class="alert alert-success alert-block" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>{{session('success')}}</strong>
         </div>
-        </div>
-    </form>
-    <!-- /.lockscreen credentials -->
+    @endif
 
-    </div>
-    <!-- /.lockscreen-item -->
-    <div class="help-block text-center">
-        Silahkan Masukkan Invoice Anda
-    </div>
+    @if (session('danger'))
+        <div class="alert alert-danger alert-block" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>{{session('danger')}}</strong>
+        </div>
+    @endif
+
 </div>
-	{{-- <form action="{{route('tracking')}}" method="GET">
-    <div class="input-group input-group ">
-        <input type="text" class="form-control" name="cari" placeholder="Cari Invoice..." value="{{old('cari')}}">
-        <span class="input-group-append">
-            <button type="submit"  value="CARI" class="btn btn-info btn-flat">Go!</button>
-        </span>
-    </div>
-	</form> --}}
-@endsection
+            
+    <div class="text-center mt-5">
+        <h1 style="font-size:4.5em; font-family: 'Fjalla One', sans-serif; color:#c0392b; font-weight:bold; text-shadow: 2px 2px rgba(0,0,0,0.5);"> 
+            <span style="font-weight: normal; color:#f39c12 ;">Customer Login </span>
+            Billionaire Store</h1>
+    </div>    
+	<div class="container h-100">
+    
+		<div class="d-flex justify-content-center h-100">
+
+			<div class="user_card">
+                
+				<div class="d-flex justify-content-center">
+                    
+					<div class="brand_logo_container">
+						<img src="{{URL::asset('adminlte/img/bs.jpg')}}" class="brand_logo" alt="Logo">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+                    <form method="GET" action="{{route('tracking')}}">
+                        @csrf
+						<div class="input-group ">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+                            <input type="text" class="form-control"  placeholder="No HP" name="cari" value="{{old('cari')}}">
+                            {{-- <input type="text" class="form-control" placeholder="Invoice..." name="cari" value="{{old('cari')}}"> --}}
+
+                         
+						</div>
+                        
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" value="CARI" class="btn login_back">
+                                    Login
+                                
+                            </button>
+
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" class="btn login_btn"><a href="{{route('frontpage')}}" style="color:white; text-decoration:none;">
+                                    Back
+                                </a>
+                            </button>
+                        </div>
+                    </form>
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

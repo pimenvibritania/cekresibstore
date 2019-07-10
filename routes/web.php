@@ -46,6 +46,10 @@ Route::get('/userview', function(){
 
 Route::get('track','TrackController@index')->name('track');
 Route::get('track/search','TrackController@search')->name('tracking');
+Route::get('trackuser/{resi}', 'TrackController@show')->middleware('trackuser')->name('trackuser_show');
+Route::get('trackuser', function(){
+    return redirect()->route('track');
+});
 
 Route::get('frontpage', function(){
     return view('frontpage');
@@ -54,5 +58,7 @@ Route::get('frontpage', function(){
 Route::get('inputresi', 'RajaOngkirController@input')->name('inputresi');
 Route::post('prosesresi','RajaOngkirController@proses')->name('prosesresi');
 
-Route::get('userlogin','Auth\LoginController@userlogin')->name('userlogin');
-Route::post('userlog','Auth\LoginController@userlog')->name('userlog');
+// Route::get('userlogin','Auth\LoginController@userlogin')->name('userlogin');
+// Route::post('userlog','Auth\LoginController@userlog')->name('userlog');
+Route::get('trackshow/{resi}','ResiController@trackResi')->middleware('reseller')->name('trackShow');
+Route::get('trackuser_track/{resi}','TrackController@trackUser')->name('trackuser_track');

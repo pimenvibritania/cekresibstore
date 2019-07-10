@@ -5,7 +5,7 @@
 <div class="container" id="margtop">
     <div class="card">
         <div class="card-header ">
-            <a class="float-right btn btn-danger" href="{{ route('resi.index')}}" >Kembali</a>    
+            <a class="float-right btn btn-danger" href="{{ url()->previous()}}" >Kembali</a>    
             <h1>INVOICE : {{$resi->invoice}}</h1>
         </div>
         <div class="card-body">

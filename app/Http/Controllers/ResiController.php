@@ -40,7 +40,13 @@ class ResiController extends Controller
 
 
     public function show(Resi $resi){
-    
+     
+        return view('resi_show',compact('resi'));
+
+    }
+
+    public function trackResi(Resi $resi){
+
         $data = $resi->id;
         $inv = Resi::find($data)->resi;
         $kurir = Resi::find($data)->kurir;
@@ -50,13 +56,10 @@ class ResiController extends Controller
         $config['account_type'] = 'pro';
         $rajaongkir = new Rajaongkir($config);
         
+        // dd($data);
     
         $waybill = $rajaongkir->getWaybill($inv, $kurir);
-
-        return view('resi_show',compact('resi'))->with('waybill', $waybill);
-
-       
-
+        return view('track_show',compact('resi'))->with('waybill', $waybill);
 
     }
 
@@ -74,7 +77,6 @@ class ResiController extends Controller
     }
 
     public function import(){
-
         Excel::import(new ResiImport, request()->file('file'));
 
         return back()->with('success','Upload successfully!');

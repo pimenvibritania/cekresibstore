@@ -13,10 +13,17 @@
             <div class=" image">
               <img src="{{ URL::asset('adminlte/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
+            @if (Auth::user() == true)
+                
             <div class="info">
               <a href="#" class="d-block">{{Auth::user()->name}}</a>
             </div>
        
+            @else
+              <div class="info">
+                <a href="#" class="d-block">Welcome</a>
+              </div>
+            @endif
           </div>
 
           
@@ -38,12 +45,12 @@
                   <p>Daftar Invoice</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{route('track')}}" class="nav-link">
                   <i class="nav-icon far fa-circle text-info"></i>
                   <p>Cek Invoice</p>
                 </a>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 <a href="{{route('inputresi')}}" class="nav-link">
                   <i class="nav-icon far fa-circle text-primary"></i>
@@ -63,11 +70,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Tracking</p>
-                </a>
-              </li>
+                  <a href="{{route('inputresi')}}" class="nav-link">
+                    <i class="nav-icon far fa-circle text-primary"></i>
+                    <p>Tracking Resi</p>
+                  </a>
+                </li>
             </ul>
             @endhasrole
             @hasrole('user')
