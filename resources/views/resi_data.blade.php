@@ -17,7 +17,7 @@
 
 
 <tr>
-    <td colspan="8" align="center">
+    <td colspan="9" align="center">
     {!! $data->links() !!}
     </td>
 </tr>

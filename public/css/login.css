@@ -86,3 +86,19 @@
     .fabig{
         font-size: 25px;
     }
+
+    .btn-searchh {
+        background: #424242;
+        border-radius: 0;
+        color: #fff;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #1c1c1c;
+      }
+      .btn-searchh:link, .btn-searchh:visited {
+        color: #fff;
+      }
+      .btn-searchh:active, .btn-searchh:hover {
+        background: #1c1c1c;
+        color: #fff;
+      }

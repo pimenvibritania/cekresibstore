@@ -3,6 +3,25 @@
 
 @section('master')
 
+<style>
+.btn-searchh {
+        background: #17A2B8;
+        border-radius: 0;
+        color: #fff;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #17A2B8;
+      }
+      .btn-searchh:link, .btn-searchh:visited {
+        color: #fff;
+      }
+      .btn-searchh:active, .btn-searchh:hover {
+        background: #1c1c1c;
+        color: #fff;
+        border-color: #1c1c1c;
+      }
+</style>
+
 
     <div class="card bg-light " id="margtop">
         <div class="card-header ">
@@ -12,16 +31,19 @@
             @endhasrole
         </div>
         <div class="card-body">
-            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-
+           
                 <div class="row">
-
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="">Masukkan Nama / INV / Resi / Tanggal </label>
-                            <input type="text" name="serach" id="serach" class="form-control" placeholder="Cari data..."/>
+                        <label for="">Masukkan Nama / INV / Resi / Tanggal </label>
+                        <div class="input-group">
+                            <form action="{{route('fetch_data')}}" method="GET">
+                                    <div class="input-group-append">
+                                <input type="text" class="form-control mr-2" name="cari" placeholder="Cari..." value="{{old('cari')}}">
+                                    <button class="btn btn-outline-secondary" type="submit" value="CARI"><i class="fa fa-search fa-fw"></i> Cari</button>
+                                </div>
+                            </form>
                         </div>
+
                     </div>
 
                     @hasrole('admin')
@@ -30,6 +52,8 @@
                         <label for="">Upload file berformat 'xlsx'</label>
                         <div class="input-group">
                             <div class="custom-file">
+                                <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                 <input type="file" name="file" class="custom-file-input" id="import">
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                             </div>
@@ -37,13 +61,13 @@
                                 <button type="submit" class="btn input-group-text" disabled >Upload</button>
                             {{-- <span class="input-group-text" id="">Upload</span> --}}
                             </div>
+                        </form>
                         </div>
                     </div>
                     </div>
                     @endhasrole
                 </div>
 
-            </form>
            
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">

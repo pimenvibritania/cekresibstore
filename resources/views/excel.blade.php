@@ -24,7 +24,7 @@
     @foreach($resis as $resi)
         <tr>
             <td>{{ $no++}}</td>
-            <td>{{ date_format(date_create($resi->tglOrder), "m/d/Y") }}</td>
+            <td>{{ date_format(date_create($resi->tglOrder), "Y-m-d") }}</td>
             <td>{{ $resi->invoice }}</td>
             <td>{{ $resi->kurir}}</td>
             <td>{{ $resi->nama }}</td>

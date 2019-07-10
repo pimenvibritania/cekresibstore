@@ -28,7 +28,7 @@ Route::post('import','ResiController@import')->name('import');
 
 Route::resource('resi', 'ResiController',['except'=> ['show'] ]);
 Route::get('resi/{resi}', 'ResiController@show')->middleware('reseller')->name('resi.show');
-Route::get('resi/fetch_data','ResiController@fetch_data')->name('fetch_data');
+Route::get('/fetch_data','ResiController@fetch_data')->name('fetch_data');
 Route::get('/admin', function(){
     return redirect()->route('admin.users.index');
 })->middleware(['auth', 'auth.admin']);
@@ -53,3 +53,6 @@ Route::get('frontpage', function(){
 
 Route::get('inputresi', 'RajaOngkirController@input')->name('inputresi');
 Route::post('prosesresi','RajaOngkirController@proses')->name('prosesresi');
+
+Route::get('userlogin','Auth\LoginController@userlogin')->name('userlogin');
+Route::post('userlog','Auth\LoginController@userlog')->name('userlog');

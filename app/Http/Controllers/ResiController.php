@@ -62,11 +62,19 @@ class ResiController extends Controller
 
     public function fetch_data(Request $request)
     {
-    
+        $cari = $request->cari;
+
+        $data = DB::table('resis')->where('nama','LIKE',"%".$cari."%")->orWhere('noHp','LIKE',"%".$cari."%")
+                                    ->orWhere('produk','LIKE',"%".$cari."%")->orWhere('invoice','LIKE',"%".$cari."%")
+                                    ->orWhere('resi','LIKE',"%".$cari."%")
+                                    ->orWhere('tglOrder','LIKE',"%".$cari."%")->paginate(10);
+
+        return view('resi', ['data' => $data]);
+
     }
 
     public function import(){
-        // $reader->formatDates(false);
+
         Excel::import(new ResiImport, request()->file('file'));
 
         return back()->with('success','Upload successfully!');

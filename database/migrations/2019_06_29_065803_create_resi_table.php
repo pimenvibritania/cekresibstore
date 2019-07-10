@@ -24,7 +24,7 @@ class CreateResiTable extends Migration
             $table->string('kota');
             $table->string('kecamatan');
             $table->string('alamat');
-            $table->string('resi');
+            $table->string('resi')->nullable();
             $table->timestamps();
         });
     }

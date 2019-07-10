@@ -25,19 +25,22 @@ class UsersTableSeeder extends Seeder
         $admin  = User::create([
             'name'  => 'admin',
             'email' => 'admin@mail.com',
-            'password'  => bcrypt('admin')
+            'password'  => bcrypt('admin'),
+            'noHp' => '085723660012',
         ]);
 
         $reseller  = User::create([
             'name'  => 'reseller',
             'email' => 'reseller@mail.com',
-            'password'  => bcrypt('reseller')
+            'password'  => bcrypt('reseller'),
+            'noHp' => '083637483929',
         ]);
 
         $user  = User::create([
             'name'  => 'user',
             'email' => 'user@mail.com',
-            'password'  => bcrypt('user')
+            'password'  => bcrypt('user'),
+            'noHp' => '0846453525626',
         ]);
 
         $admin ->roles()->attach($adminRole);

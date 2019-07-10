@@ -1,17 +1,22 @@
-<?php
+<?php 
 
 namespace App\Imports;
 use Carbon\Carbon;
-
 use App\Resi;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\SkipsFailures;
+
+use Maatwebsite\Excel\Concerns\Importable;
+
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 // HeadingRowFormatter::default('none');
-
 class ResiImport implements ToModel, WithHeadingRow
 {
+
+    use Importable, SkipsFailures;
+
     /**
     * @param array $row
     *
@@ -20,17 +25,19 @@ class ResiImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
 
-        $date = $row['Tanggal Order'];
-        // $date = strtotime($date);
-        // $date = new DateTime($date);
-        $date = date_create($date);
-        $date = date_format($date, "Y-m-d");
-        // $date = Date::excelToDateTimeObject($date);
-        // dd($date);
-        // $row->formatDates(false);
-        // $row->setDateFormat('Y-m-d');
-        return new Resi([
-            //
+        try{
+        $date = date('Y-m-d', strtotime($row['Tanggal Order']));
+        // $date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($date))->format('Y-m-d');
+        // data kadang fail ketika nge eksekusi baris ini ^^^
+        } catch(Exception $e){
+            
+            return back();
+        }
+        
+        //updateOrCreate = array pertama isikan berdasarkan data yg unique, untuk update, array kedua isikan data yg ingin d create
+        return  Resi::updateOrCreate([
+            'invoice' => $row['Invoice']],
+            [
             'tglOrder' => $date,
             'invoice' =>$row['Invoice'],
             'kurir'=>$row['Kurir'],
@@ -45,5 +52,6 @@ class ResiImport implements ToModel, WithHeadingRow
             'email_reseller' => $row['Email Reseller'],
             'nama_reseller' => $row['Nama Reseller'],
         ]);
+       
     }
 }

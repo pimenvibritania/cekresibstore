@@ -16,7 +16,6 @@
                 <div class="col-lg-6">
                     <div class="card mt-5">
                         <div class="card-body">
-                            <h3 class="text-center">www.malasngoding.com</h3>
                             <br/>
 
                             {{-- menampilkan error validasi --}}
@@ -43,7 +42,7 @@
                                     <select class="form-control"  name="kurir" value="{{ old('kurir') }}">
                                         <option value="jne">JNE</option>
                                         <option value="tiki">TIKI</option>
-                                        <option value="pos">POS</option>
+                                        <option value="pos">POS\</option>
                                     </select>
                                 </div>
                                

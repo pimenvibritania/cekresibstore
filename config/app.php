@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -234,6 +234,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'RajaOngkir' => Agungjk\Rajaongkir\RajaOngkirFacade::class,
+        'FastExcel' => Rap2hpoutre\FastExcel\Facades\FastExcel::class,
+
 
 
 
