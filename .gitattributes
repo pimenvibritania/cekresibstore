@@ -1,4 +1,7 @@
 *.blade linguist-detectable=true
+*.blade.php linguist-detectable=true
+*.json linguist-detectable=true
+*.less linguist-detectable=true
 *.js linguist-detectable=false
 *.php linguist-detectable=true
 *.html linguist-detectable=false
