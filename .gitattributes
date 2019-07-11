@@ -1,4 +1,9 @@
-*.rb linguist-vendored=true
-*.py linguist-vendored=true
-*.html linguist-vendored=false
-CHANGELOG.md export-ignore
+*.blade linguist-detectable=true
+*.blade.php linguist-detectable=true
+*.json linguist-detectable=true
+*.less linguist-detectable=true
+*.js linguist-detectable=true
+*.php linguist-detectable=true
+*.html linguist-detectable=false
+*.xml linguist-detectable=false
+*.css linguist-detectable=false
