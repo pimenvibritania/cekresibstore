@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('frontpage');
-});
+// Route::get('/', function () {
+//     return redirect()->route('frontpage');
+// });
 
 Auth::routes();
 
@@ -51,7 +51,7 @@ Route::get('trackuser', function(){
     return redirect()->route('track');
 });
 
-Route::get('frontpage', function(){
+Route::get('/', function(){
     return view('frontpage');
 })->name('frontpage');
 
