@@ -2,7 +2,7 @@
 *.blade.php linguist-detectable=true
 *.json linguist-detectable=true
 *.less linguist-detectable=true
-*.js linguist-detectable=false
+*.js linguist-detectable=true
 *.php linguist-detectable=true
 *.html linguist-detectable=false
 *.xml linguist-detectable=false
