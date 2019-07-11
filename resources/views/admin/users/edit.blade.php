@@ -13,7 +13,7 @@
                     {{ method_field('PUT') }}
                     @foreach ($roles as $role)
                         <div class="form-check">
-                            <input type="checkbox" name="roles[]" value="{{$role->id}}" {{ $user->hasAnyRole($role->name)?'checked':'' }} >
+                            <input type="radio" name="roles[]" value="{{$role->id}}" {{ $user->hasAnyRole($role->name)?'checked':'' }} >
                             <label> {{ $role->name }} </label>
                         </div>
                     @endforeach

@@ -37,8 +37,9 @@ class TrackController extends Controller
         $rajaongkir = new Rajaongkir($config);
         
         // dd($data);
-    
+        
         $waybill = $rajaongkir->getWaybill($inv, $kurir);
+        
         return view('trackuser_track',compact('resi'))->with('waybill', $waybill);
 
     }

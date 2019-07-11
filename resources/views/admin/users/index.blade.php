@@ -6,7 +6,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <span style="font-size:25px; "><b>MANAGE USER</b></span>                 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span style="font-size:25px; "><b>MANAGE USER</b></span>                 
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{route('admin.users.create')}}" class="btn btn-primary float-right">Tambah</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body">

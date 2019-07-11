@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\user;
 use App\Role;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth; 
 
 class UserController extends Controller
 {
@@ -72,5 +73,26 @@ class UserController extends Controller
         //
         User::destroy($id);
         return redirect()->route('admin.users.index')->with('success','User berhasil di hapus!');
+    }
+
+    public function create(){
+        return view('admin.users.create');
+    }
+    public function store(Request $request){
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'noHp' => 'required',
+        ]);
+
+        User::create([
+            'name' => $request-> name,
+            'email' => $request-> email,
+            'password' => Hash::make($request-> password),
+            'noHp'=> $request-> noHp,
+        ]); 
+
+        return redirect()->route('admin.users.index')->with('success','User berhasil di tambahkan');
     }
 }

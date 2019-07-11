@@ -20,7 +20,7 @@ class Trackuser
         $id = $request->resi->id;
         $data = Resi::where('noHp', $nope)->where('id', $id)->first();
 
-        if($data){
+        if($data){ 
             return $next($request);
         }else{
             return back()->with('danger','Invoice yang anda akses bukan milik anda');

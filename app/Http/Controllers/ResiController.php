@@ -33,7 +33,7 @@ class ResiController extends Controller
             $data = DB::table('resis')->where('email_reseller','=',"{$cari}")->paginate();
 
         }     
-
+ 
 
         return view('resi', compact('data'));
     }
