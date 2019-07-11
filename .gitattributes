@@ -1,7 +1,4 @@
 *.rb linguist-vendored=true
 *.py linguist-vendored=true
-*.scss linguist-vendored=false
 *.html linguist-vendored=false
-*.js linguist-vendored=true
-*.php linguist-vendored=true
 CHANGELOG.md export-ignore
