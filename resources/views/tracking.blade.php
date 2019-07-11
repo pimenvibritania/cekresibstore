@@ -3,7 +3,10 @@
 <html>
     
 <head>
-	<title>My Awesome Login Page</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Customer Login Page</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
@@ -11,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
 
 </head>
-<!--Coded with love by Mutiullah Samim-->
 <body>
 <div class="container mt-1">
     @if (session('success'))
@@ -30,11 +32,7 @@
 
 </div>
             
-    <div class="text-center mt-5">
-        <h1 style="font-size:4.5em; font-family: 'Fjalla One', sans-serif; color:#c0392b; font-weight:bold; text-shadow: 2px 2px rgba(0,0,0,0.5);"> 
-            <span style="font-weight: normal; color:#f39c12 ;">Customer Login </span>
-            Billionaire Store</h1>
-    </div>    
+       
 	<div class="container h-100">
     
 		<div class="d-flex justify-content-center h-100">
@@ -50,6 +48,11 @@
 				<div class="d-flex justify-content-center form_container">
                     <form method="GET" action="{{route('tracking')}}">
                         @csrf
+                        <div class="text-center">
+                                <h1 style="font-size:2.5em; font-family: 'Fjalla One', sans-serif; color:#C0392B; font-weight:bold; text-shadow: 2px 2px rgba(255,255,255,0.5); margin-bottom:35px;">
+                                    Customer Login
+                                </h1>
+                            </div>
 						<div class="input-group ">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>

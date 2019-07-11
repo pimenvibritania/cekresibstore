@@ -12,7 +12,7 @@
                             <span style="font-size:25px; "><b>TAMBAH USER</b></span>                 
                         </div>
                         <div class="col-md-6">
-                            <a href="{{url()->previous()}}" class="btn btn-danger float-right">Kembali</a>
+                            <a href="{{url()->previous()}}" class="btn btn-danger float-right">Kembali  </a>
                         </div>
                     </div>
                 </div>
