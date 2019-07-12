@@ -24,6 +24,8 @@
     @foreach($resis as $resi)
         <tr>
             <td>{{ $no++}}</td>
+            {{-- <td>{{ \PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_DATE_DATETIME }}</td> --}}
+            {{-- <td>{{ date('Y-m-d', \PHPExcel_Shared_Date::ExcelToPHP($resi->tglOrder)) }}</td> --}}
             <td>{{ date_format(date_create($resi->tglOrder), "Y-m-d") }}</td>
             <td>{{ $resi->invoice }}</td>
             <td>{{ $resi->kurir}}</td>
