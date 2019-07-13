@@ -40,7 +40,7 @@
                     <td>
                        <div class="row">
                            <div class="col-md-6">
-                                <a class="btn btn-info" id="white" href="{{ route('resi.show',$row->id) }}" >Lihat</a>
+                                <a class="btn btn-info" id="white" href="{{ route('trackuser_show',$row->id) }}" >Lihat</a>
                             </div>
                             <div class="col-md-6">
                                 <a class="btn btn-success" id="white" href="{{ route('trackuser_track',$row->id) }}" >Track</a>        

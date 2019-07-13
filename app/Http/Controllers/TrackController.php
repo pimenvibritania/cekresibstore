@@ -47,8 +47,8 @@ class TrackController extends Controller
     public function search(Request $request){
 
         $cari = $request->cari;
-
-        
+        $cari = (int)$cari;
+        // dd($cari);
         $tracking = DB::table('resis')
         ->where('noHp','=',"{$cari}")->paginate();
 
