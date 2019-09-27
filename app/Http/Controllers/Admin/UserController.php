@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\user;
-use App\Role;
+use App\Role; 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth; 
 

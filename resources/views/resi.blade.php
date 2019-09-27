@@ -76,17 +76,16 @@
                             {{-- <th>No</th> --}}
                             {{-- <th>Tanggal Order</th> --}}
                             {{-- <th>Nama</th> --}}
-                            <th width="5%">No</th>
-                            <th width="15%" class="sorting" data-sorting_type="asc" data-column_name="tglOrder" style="cursor: pointer">Tanggal Order <span id="tglOrder_icon"></span></th>
-                            <th width="10%" class="sorting" data-sorting_type="asc" data-column_name="nama" style="cursor: pointer">Nama <span id="nama_icon"></span></th>
-                            <th width="10%" class="sorting" data-sorting_type="asc" data-column_name="produk" style="cursor: pointer">Produk <span id="produk_icon"></span></th>
-
-                            <th width="15%">Invoice</th>
-                            <th width="5%">Kurir</th>
-                            <th width="15%">Resi</th>
-                            {{-- <th>No HP</th> --}}
-                            <th width="15%">Action</th>
-                            <th width="10%">Notifikasi</th>
+                            <th >No</th>
+                            <th width="10%" class="sorting" data-sorting_type="asc" data-column_name="tglOrder" style="cursor: pointer">Tanggal Order <span id="tglOrder_icon"></span></th>
+                            <th  class="sorting" data-sorting_type="asc" data-column_name="nama" style="cursor: pointer">Nama <span id="nama_icon"></span></th>
+                            <th  class="sorting" data-sorting_type="asc" data-column_name="produk" style="cursor: pointer">Produk <span id="produk_icon"></span></th>
+                            <th>Invoice</th>
+                            <th >Kurir</th>
+                            <th >Resi</th>
+                            <th width="15%" >Action</th>
+                            <th>Notifikasi</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
