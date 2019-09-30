@@ -43,6 +43,7 @@ Route::get('/userview', function(){
     return view('user_view');
 })->name('userview');
 
+Route::get('klasifikasi','klasifikasiController@index')->name('klasifikasi');
 
 Route::get('track','TrackController@index')->name('track');
 Route::get('track/search','TrackController@search')->name('tracking');

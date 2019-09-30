@@ -43,8 +43,9 @@
        $rajaongkir = new Steevenz\Rajaongkir($config);
 
        $waybill = $rajaongkir->getWaybill($res->resi, $res->kurir);
-
+            dd($waybill);
        if ($waybill == true) {
+           
            # code...
            echo " <b>{$waybill['delivery_status']['status']}</b>";
        } else {
