@@ -57,6 +57,12 @@
                   <p>Tracking Resi</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('klasifikasi')}}" class="nav-link">
+                  <i class="nav-icon far fa-circle text-secondary"></i>
+                  <p>Rekap</p>
+                </a>
+              </li>
             </ul>
             @endhasrole
 

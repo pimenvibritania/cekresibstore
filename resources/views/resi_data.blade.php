@@ -29,9 +29,10 @@
                  <span class="btn btn-sm btn-success">Terkirim</span>    
              </td>
          @endif
-         <td>
+         
+         
+        <td>
 
-        
         {{! $res = App\Resi::where('resi', $row->resi)->first() }}
         {{-- {{$inv = App\Resi::find($res)->resi}} --}}
      
@@ -43,7 +44,7 @@
        $rajaongkir = new Steevenz\Rajaongkir($config);
 
        $waybill = $rajaongkir->getWaybill($res->resi, $res->kurir);
-            dd($waybill);
+            // dd($waybill);
        if ($waybill == true) {
            
            # code...
